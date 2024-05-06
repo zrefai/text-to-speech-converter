@@ -17,6 +17,7 @@ export const TTSJobRow = ({ job }: TTSJobRowProps) => {
   const [minutesAgo, setMinutesAgo] = useState(
     getMinutesAgo(job.jobStartTime ?? currentDate)
   );
+  console.log(job);
 
   useEffect(() => {
     const intervalId = setInterval(() => {
@@ -45,7 +46,10 @@ export const TTSJobRow = ({ job }: TTSJobRowProps) => {
           <div className="flex flex-row gap-2 items-center">
             <Badge variant={data.status}>{data.status.toUpperCase()}</Badge>
             <p className="text-sm">{minutesToShorthand(minutesAgo)}</p> -
-            <a className="text-sm" href={data.model?.demoUrl}>
+            <a
+              className={`text-sm ${data.model?.demoUrl ? 'underline' : null}`}
+              href={data.model?.demoUrl}
+            >
               {formattedTitle}
             </a>
           </div>
