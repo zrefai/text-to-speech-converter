@@ -26,17 +26,27 @@ export const TTSJobRow = ({ job }: TTSJobRowProps) => {
     return () => clearInterval(intervalId);
   }, [job.jobStartTime]);
 
+  const formattedTitle =
+    data.model?.title && data.model.title.length > 18
+      ? data.model.title.slice(0, 15) + '...'
+      : data.model?.title;
+
   return (
     <div className="flex flex-col gap-3">
       <Separator className="w-full" />
-      <div className="flex flex-row">
-        <img className="h-auto w-20 rounded-lg" src={job.model?.imageUrl} />
-        <div className="flex flex-col gap-4 w-full ml-4">
+      <div className="flex flex-row gap-3">
+        {job.model?.imageUrl ? (
+          <img
+            className="flex-1 h-auto w-20 rounded-lg"
+            src={job.model?.imageUrl}
+          />
+        ) : null}
+        <div className="flex flex-4 flex-col gap-4 w-full">
           <div className="flex flex-row gap-2 items-center">
             <Badge variant={data.status}>{data.status.toUpperCase()}</Badge>
             <p className="text-sm">{minutesToShorthand(minutesAgo)}</p> -
             <a className="text-sm" href={data.model?.demoUrl}>
-              {data.model?.title}
+              {formattedTitle}
             </a>
           </div>
           <AudioPlayer

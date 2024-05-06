@@ -13,14 +13,8 @@ import {
   FormLabel,
   FormMessage,
 } from '../ui/form';
-import {
-  Select,
-  SelectContent,
-  SelectItem,
-  SelectTrigger,
-  SelectValue,
-} from '../ui/select';
 import { Icons } from '../ui/icons';
+import { SelectVoiceModelDialog } from '../dialogs/select-voice-model.dialog';
 
 interface TextToSpeechFormProps {
   voiceModels: VoiceModel[];
@@ -63,30 +57,13 @@ export const CreateTTSJobForm = ({
           name="voice"
           render={({ field }) => (
             <FormItem>
-              <FormLabel>Voice model</FormLabel>
-              <Select
-                onValueChange={field.onChange}
-                defaultValue={field.value}
-                value={field.value}
-              >
-                <FormControl>
-                  <SelectTrigger>
-                    <SelectValue placeholder="Select a voice model" />
-                  </SelectTrigger>
-                </FormControl>
-                <SelectContent>
-                  {voiceModels.map((voiceModel) => {
-                    return (
-                      <SelectItem
-                        key={voiceModel.id}
-                        value={voiceModel.id.toString()}
-                      >
-                        {voiceModel.title}
-                      </SelectItem>
-                    );
-                  })}
-                </SelectContent>
-              </Select>
+              <div className="flex flex-col gap-3">
+                <FormLabel>Voice model</FormLabel>
+                <SelectVoiceModelDialog
+                  voiceModels={voiceModels}
+                  onChange={field.onChange}
+                />
+              </div>
               <FormMessage />
             </FormItem>
           )}
