@@ -2,6 +2,7 @@ import { useMemo, useState } from 'react';
 import { Button } from '../ui/button';
 import {
   Dialog,
+  DialogClose,
   DialogContent,
   DialogDescription,
   DialogFooter,
@@ -44,8 +45,15 @@ export const SelectVoiceModelDialog = ({
     setIsOpen(false);
   };
 
+  const onOpenChange = (open: boolean) => {
+    if (!open) {
+      setVoiceModelId(null);
+    }
+    setIsOpen(open);
+  };
+
   return (
-    <Dialog open={open} onOpenChange={setIsOpen}>
+    <Dialog open={open} onOpenChange={onOpenChange}>
       <DialogTrigger asChild>
         <Button variant="outline">{buttonTitle}</Button>
       </DialogTrigger>
