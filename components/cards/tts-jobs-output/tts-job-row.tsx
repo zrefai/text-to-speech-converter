@@ -17,7 +17,6 @@ export const TTSJobRow = ({ job }: TTSJobRowProps) => {
   const [minutesAgo, setMinutesAgo] = useState(
     getMinutesAgo(job.jobStartTime ?? currentDate)
   );
-  console.log(job);
 
   useEffect(() => {
     const intervalId = setInterval(() => {
