@@ -7,16 +7,6 @@
 - The conversion takes some time to process and we should show appropriate loading states. Expect the conversion to take about 10 seconds, but it can take longer.
 - After the conversion is complete, the user should be able to download the speech output as an audio file. Bonus points for making the output playable in the browser.
 
-## Expectations
-
-We expect you to complete the task in no more than a few hours. You can spend more time if you want to, but it's not necessary. We intentionally don't provide a lot of details so you can make decisions on your own.
-
-We're looking for the following things:
-
-- The code works! It should be bug-free and work as expected
-- The code is well structured and easy to read
-- If you have extra time and want to show off, you can improve the user experience
-
 ## Getting started
 
 Run the install script
